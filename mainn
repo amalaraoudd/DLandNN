@@ -1,0 +1,27 @@
+
+
+def main():
+    st.title("Chatbot")
+    st.write("Hello! I'm a chatbot. Ask me anything about the topic in the text file.")
+    # Get the user's input (text or speech)
+    input_type = st.radio("Input type:", ("Text", "Speech"))
+    if input_type == "Text":
+        # Get the user's text input
+        input_text = st.text_input("You:")
+        # Create a button to submit the text input
+        if st.button("Submit"):
+            # Call the chatbot function with the text input and display the response
+            response = chatbot(input_text)
+            st.write("Chatbot: " + response)
+    elif input_type == "Speech":
+        # Create a button to start speech recognition
+        if st.button("Start Recording"):
+            # Transcribe speech into text using speech recognition
+            input_text = transcribe_speech()
+            st.write("Transcription:", input_text)
+            # Call the chatbot function with the transcribed text and display the response
+            response = chatbot(input_text)
+            st.write("Chatbot: " + response)
+
+if __name__ == "__main__":
+    main()
